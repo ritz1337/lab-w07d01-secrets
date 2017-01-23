@@ -25,20 +25,10 @@ app.get('/', function(req, res) {
   });
 });
 
-app.post('/secrets/:id/likes', function(req, res) {
-  var id = req.params.id;
-  mongo.connect(url, function(err, db) {
-    db.collection(collection).findAndModify(
-      {_id: ObjectID(id)},
-      {},
-      {$inc: {likes: 1}},
-      {new: true},
-      function(err, result) {
-        db.close();
-        res.json(result);
-      });
-  });
-});
+
+
+var secrets = require('./routes/secrets');
+app.use('/secrets', secrets) // for all routes to /secrets, use secrets
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
