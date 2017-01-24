@@ -1,0 +1,6 @@
+<h1>Edit</h1>
+<form method="POST" action="/lies/{{lie._id}}?_method=PUT">
+  <input type="text" name="statement" value="{{lie.statement}}">
+  <input type="text" name="truth" value="{{lie.truth}}">
+  <button>Update</button>
+</form>

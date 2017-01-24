@@ -1,16 +1,17 @@
+<h1>😯 Shhh</h1>
+
 <p>Total secrets {{secrets.length}}</p>
 
-<script>
-var secrets = JSON.parse("{{secretsJSON}}".replace(/&quot;/g,'"'));
-</script>
+<input type="text" id="secret_message">
+<button id="create">Create</button>
 
 <div id="secrets">
   {{#each secrets as |secret|}}
   <div class="secret">
     <div class="message">{{secret.message}}</div>
-    <button class="like-btn" data-id={{secret._id}}>❤️</button>
+    <button class="like-btn" data-id="{{secret._id}}">❤️</button>
     <span class="likes">{{secret.likes}}</span>
-    <button class="remove-btn" data-id={{secret._id}}>X</button>
+    <button class="remove-btn" data-id="{{secret._id}}">X</button>
   </div>
   {{/each}}
 </div>

@@ -1,6 +1,7 @@
 console.log('sshhh');
 
 $('#create').on('click', function(evt) {
+  $('#secret_message').val('');
   var newSecret = {
     message: $('#secret_message').val()
   }
@@ -11,7 +12,7 @@ $('#create').on('click', function(evt) {
   });
 });
 
-$('.remove-btn').on('click', function(evt) {
+$('#secrets').on('click', '.remove-btn', function(evt) {
   var $btn = $(evt.target);
   var id = $btn.data().id;
   $.ajax({
@@ -22,7 +23,7 @@ $('.remove-btn').on('click', function(evt) {
   })
 });
 
-$('.like-btn').on('click', function(evt) {
+$('#secrets').on('click', '.like-btn', function(evt) {
   var $btn = $(evt.target);
   var id = $btn.data().id;
   $.post('/secrets/' + id + '/likes', function(res) {

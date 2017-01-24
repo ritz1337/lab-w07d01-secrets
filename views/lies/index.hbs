@@ -1,0 +1,11 @@
+<p>Total Lies {{lies.length}}</p>
+
+<ul id="lies">
+  {{#each lies as |lie|}}
+  <li class="lie">
+    <a href="/lies/{{lie._id}}">{{lie.statement}}</span>
+  </li>
+  {{/each}}
+</ul>
+
+<a href="/lies/new">New Lie</a>
