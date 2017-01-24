@@ -32,4 +32,16 @@ router.post('/', function(req, res) {
   })
 })
 
+router.get('/:id/edit', function(req, res) {
+  var id = req.params.id
+  mongo.connect(url, function(err, db) {
+    db.collection(collection).find({_id: ObjectID(id)}).toArray(function(err, lie_result) {
+      console.log(lie_result)
+      db.close();
+      res.render('editlie', {items: lie_result[0]})
+    })
+  })
+})
+
+
 module.exports = router;
