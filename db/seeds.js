@@ -22,15 +22,39 @@ var lies = [
   }
 ]
 
+// for just 1 collection
+// mongo.connect(url, function(err, db) {
+//   console.log('emptying collection');
+//   db.collection(collection).remove({}, function(err, result) {
+//     console.log('seeding collection');
+//     db.collection(collection).insert(secrets, function(err, result) {
+//       db.close();
+//       console.log(result);
+//       process.exit(); //ends the process
+//     });
+//   })
+// });
 
-mongo.connect(url, function(err, db) {
-  console.log('emptying collection');
-  db.collection(collection).remove({}, function(err, result) {
-    console.log('seeding collection');
-    db.collection(collection).insert(secrets, function(err, result) {
-      db.close();
-      console.log(result);
-      process.exit(); //ends the process
-    });
-  })
+
+collection.forEach(function(c) {
+ mongo.connect(url, function(err, db) {
+ console.log('emptying collection');
+ db.collection(c).remove({}, function(err, result) {
+   console.log('seeding collection');
+   if (c === 'secrets') {
+     db.collection(c).insert(secrets, function(err, result) {
+     db.close();
+     console.log(result);
+     process.exit(); // ends the process
+   })
+   } else if (c === 'lies') {
+       db.collection(c).insert(lies, function(err, result) {
+       db.close();
+       console.log(result);
+       process.exit(); // ends the process
+     })
+   }
+ })
 });
+
+})

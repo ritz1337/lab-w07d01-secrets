@@ -1,0 +1,9 @@
+<h1> LIAR</h1>
+<p>Total lies {{lies.length}}</p>
+
+{{#each lies as |lie|}}
+<div class="lie">
+  <div class="statement">{{lie.statement}}</div>
+  <div class="truth">{{lie.truth}}</div>
+</div>
+{{/each}}

@@ -1,11 +1,24 @@
 <h1>😯 Shhh</h1>
 <p>Total secrets {{secrets.length}}</p>
 
+<input type="text" id="secret_message">
+<button id="create">Create</button>
+
 {{#each secrets as |secret|}}
 <div class="secret">
   <div class="message">{{secret.message}}</div>
   <button class="like-btn" data-id={{secret._id}}>❤️</button>
   <span class="likes">{{secret.likes}}</span>
   <button class="remove-btn" data-id={{secret._id}}>X</button>
+</div>
+{{/each}}
+
+<h1> LIAR</h1>
+<p>Total lies {{lies.length}}</p>
+
+{{#each lies as |lie|}}
+<div class="lie">
+  <div class="statement">{{lie.statement}}</div>
+  <div class="lie">{{lie.truth}}</div>
 </div>
 {{/each}}
